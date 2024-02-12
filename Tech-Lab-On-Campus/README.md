@@ -41,7 +41,17 @@ docker -v && docker-compose -v
 
 4. Utilize Docker to generate and execute a functional image of the project directly from the terminal within your chosen Integrated Development Environment (IDE). Whether you opt for developing the project in Jupyter Notebook or your preferred IDE, follow the steps outlined below to ensure a smooth setup and execution process:
 
-A) Jupyter Notebook
+A) IDE  
+* In the terminal window of your IDE run:
+    ```sh
+    docker-compose up -d && docker-compose exec rmq_lab /bin/bash
+    ```
+* `docker-compose up -d` : Starts our rabbitmq and python service in detached mode (-d), running them in the background.
+* `docker-compose exec rmq_lab /bin/bash` : This command will open an interactive Bash shell inside the rmq_lab service container. Once you are inside the container you can run Python scripts.
+
+* Note: If you encounter an error such as `unix:///Users/userName/.docker/run/docker.sock. Is the docker daemon running?`, please ensure that your Docker application is running.
+  
+B) Jupyter Notebook
 * In the terminal window of your IDE run:
     ```sh
     docker-compose up
@@ -54,16 +64,6 @@ A) Jupyter Notebook
     rmq_lab-1   |         http://d572024fabe2:8888/lab?token=4a07fca9cd4a66eba129533a6272f5f5443fdf3f0b7c0e5e
     rmq_lab-1   |         http://127.0.0.1:8888/lab?token=4a07fca9cd4a66eba129533a6272f5f5443fdf3f0b7c0e5e
     ```
-    
-B) IDE  
-* In the terminal window of your IDE run:
-    ```sh
-    docker-compose up -d && docker-compose exec rmq_lab /bin/bash
-    ```
-* `docker-compose up -d` : Starts our rabbitmq and python service in detached mode (-d), running them in the background.
-* `docker-compose exec rmq_lab /bin/bash` : This command will open an interactive Bash shell inside the rmq_lab service container. Once you are inside the container you can run Python scripts.
-
-* Note: If you encounter an error such as `unix:///Users/userName/.docker/run/docker.sock. Is the docker daemon running?`, please ensure that your Docker application is running.
 
 5. Log Into the RabbitMQ Website.
 * From your desktop, open Docker Desktop Dashboard.
